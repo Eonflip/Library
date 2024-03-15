@@ -15,7 +15,7 @@ class Book {
         this.genre = genre;
         this.read = read;
     }
-}
+};
 
 function addBookToLibrary() {
     const form = document.getElementById('bookForm');
@@ -28,25 +28,54 @@ function addBookToLibrary() {
     const newBook = new Book(title, author, pages, genre, read);
 
     myLibrary.push(newBook);
-}
+};
 
 
 bookButton.onclick = function() {
     bookModal.style.display = "block";
-}
+};
 
 span.onclick = function() {
     bookModal.style.display = "none";
-}
+};
 
 window.onclick = function(event) {
-    if (event.target == modal) {
+    if (event.target == bookModal) {
         bookModal.style.display = "none";
     }
-}
+};
 
 
-addBook.onclick = function() {
-    const latestBook = myLibrary[-1];
-    bookGrid.appendChild(latestBook);
-}
+addBook.onclick = function(event) {
+    event.preventDefault();
+    addBookToLibrary();
+
+    const latestBook = myLibrary[myLibrary.length - 1];
+
+    const bookTile = document.createElement('div');
+    bookTile.classList.add('book-tile');
+
+    const bookTitle = document.createElement('h1');
+    bookTitle.textContent = latestBook.title;
+    bookTile.appendChild(bookTitle);
+
+    const bookAuthor = document.createElement('p');
+    bookAuthor.textContent = latestBook.author;
+    bookTile.appendChild(bookAuthor);
+    
+    const bookPages = document.createElement('p');
+    bookPages.textContent = latestBook.pages;
+    bookTile.appendChild(bookPages);
+
+    const bookGenre = document.createElement('p');
+    bookGenre.textContent = latestBook.genre
+    bookTile.appendChild(bookGenre);
+
+    const bookRead = document.createElement('button');
+    bookRead.textContent = latestBook.read ? "Read" : "Not Read";
+    bookTile.appendChild(bookRead);
+
+    bookGrid.appendChild(bookTile);
+
+    bookModal.style.display = "none";
+};
