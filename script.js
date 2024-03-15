@@ -1,7 +1,10 @@
-const myLibrary = []
+const myLibrary = [];
 let bookModal = document.getElementById("bookModal");
 let bookButton = document.querySelector(".book-button");
+let bookGrid = document.querySelector(".book-grid");
 let span = document.querySelector(".close");
+let addBook = document.querySelector(".add-book");
+
 
 //Book constructor
 class Book {
@@ -15,7 +18,16 @@ class Book {
 }
 
 function addBookToLibrary() {
+    const form = document.getElementById('bookForm');
+    const title = form.title.value;
+    const author = form.author.value;
+    const pages = form.pages.value;
+    const genre = form.genre.value;
+    const read = form.read.checked;
 
+    const newBook = new Book(title, author, pages, genre, read);
+
+    myLibrary.push(newBook);
 }
 
 
@@ -31,4 +43,10 @@ window.onclick = function(event) {
     if (event.target == modal) {
         bookModal.style.display = "none";
     }
+}
+
+
+addBook.onclick = function() {
+    const latestBook = myLibrary[-1];
+    bookGrid.appendChild(latestBook);
 }
