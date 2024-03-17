@@ -73,9 +73,28 @@ addBook.onclick = function(event) {
 
     const bookRead = document.createElement('button');
     bookRead.textContent = latestBook.read ? "Read" : "Not Read";
+    bookRead.classList.add('book-read');
     bookTile.appendChild(bookRead);
 
     bookGrid.appendChild(bookTile);
 
     bookModal.style.display = "none";
 };
+
+
+const saveLocal = () => {
+    localStorage.setItem('library', JSON.stringify(library))
+  }
+  
+  const restoreLocal = () => {
+    const books = JSON.parse(localStorage.getItem('library'))
+    if (books) {
+      library.books = books.map((book) => JSONToBook(book))
+    } else {
+      library.books = []
+    }
+  };
+
+
+
+  saveLocal();
