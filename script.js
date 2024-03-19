@@ -4,7 +4,7 @@ class Library {
         this.books = [];
     }
 }
-//Book constructor
+//Book class constructor
 class Book {
     constructor(title, author, pages, genre, read) {
         this.title = title;
@@ -15,7 +15,11 @@ class Book {
     }
 };
 
+//Create new library object
 const myLibrary = new Library();
+
+
+//Variables to add events
 let bookModal = document.getElementById("bookModal");
 let bookButton = document.querySelector(".book-button");
 let bookGrid = document.querySelector(".book-grid");
@@ -39,9 +43,9 @@ function addBookToLibrary() {
 };
 
 
-bookButton.onclick = function() {
+bookButton.addEventListener('click', () => {
     bookModal.style.display = "block";
-};
+});
 
 span.onclick = function() {
     bookModal.style.display = "none";
@@ -93,15 +97,24 @@ const displayBooks = () => {
         bookTile.appendChild(bookTitle);
 
         const bookAuthor = document.createElement('p');
-        bookAuthor.textContent = `Author: ${book.author}`;
-        bookTile.appendChild(bookAuthor);
+        const authorLabel = document.createElement('strong'); // Use strong instead of span for semantic bolding
+        authorLabel.textContent = 'Author:'; // Set text content safely
+        bookAuthor.appendChild(authorLabel); // Append the bold "Author: " to the paragraph
+        bookAuthor.append(` ${book.author}` ); // Add the author's name after the bold label
+        bookTile.appendChild(bookAuthor); 
 
         const bookPages = document.createElement('p');
-        bookPages.textContent = `Pages: ${book.pages}`;
+        const pagesLabel = document.createElement('strong');
+        pagesLabel.textContent = 'Pages:';
+        bookPages.appendChild(pagesLabel);
+        bookPages.append(` ${book.pages}` );
         bookTile.appendChild(bookPages);
 
         const bookGenre = document.createElement('p');
-        bookGenre.textContent = `Genre: ${book.genre}`;
+        const genreLabel = document.createElement('strong');
+        genreLabel.textContent = 'Genre:';
+        bookGenre.appendChild(genreLabel);
+        bookGenre.append( ` ${book.genre}` );
         bookTile.appendChild(bookGenre);
 
         const bookRead = document.createElement('button');
