@@ -1,5 +1,6 @@
+/* Universal Styling */
 :root {
-    --body-color: rgb(185, 118, 212);
+    --body-color: lightgrey;
     --footer-color: teal;
     --header-color: teal;
     --primary-light: white;
@@ -9,17 +10,22 @@ body {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 main {
     background-color: var(--body-color);
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    height: 100vh;
+    width: 100%;
 }
 
+/* Main Content Styling */
 header {
     background-color: var(--header-color);
     color: var(--primary-light);
@@ -37,43 +43,16 @@ header {
     font-size: 20px;
 }
 
+label {
+    font-weight: bold;
+}
+
+
 .book-button {
     padding: 10px;
     border-radius: 5px;
     width: 20%; 
     font-size: 20px;
-}
-
-.book-stats {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: absolute; 
-    bottom: 125px;
-}
-
-.footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    width: 100%;
-    padding: 10px;
-    color: var(--primary-light);
-    background-color: var(--footer-color);
-    font-size: 20px;
-}
-
-.fa-github {
-    font-size: 30px;
-    color: white;
-}
-
-.new-book {
-    border: 2px solid red;
 }
 
 .book-modal {
@@ -123,3 +102,42 @@ input {
     text-decoration: none;
     cursor: pointer;
 }
+
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    padding: 20px;
+    width: 100%;
+    /*border: 2px solid red;*/
+    
+}
+
+
+.book-tile {
+    border: 2px solid black;
+    border-radius: 10px;
+    margin: 30px;
+    padding: 10px;
+    background-color: rgb(235, 212, 182);
+    box-shadow: 2px 5px 5px black;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px;
+    color: var(--primary-light);
+    background-color: var(--footer-color);
+    font-size: 20px;
+}
+
+.fa-github {
+    font-size: 30px;
+    color: white;
+}
+
+
