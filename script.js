@@ -6,11 +6,12 @@ class Library {
 }
 //Book class constructor
 class Book {
-    constructor(title, author, pages, genre, read) {
+    constructor(title, author, pages, genre, year, read) {
         this.title = title;
         this.author = author;
         this.pages = pages;
         this.genre = genre;
+        this.year = year;
         this.read = read;
     }
 };
@@ -35,9 +36,10 @@ function addBookToLibrary() {
     const author = form.author.value;
     const pages = form.pages.value;
     const genre = form.genre.value;
+    const year = form.year.value;
     const read = form.read.checked;
 
-    const newBook = new Book(title, author, pages, genre, read);
+    const newBook = new Book(title, author, pages, genre, year, read);
 
     myLibrary.books.push(newBook);
 };
@@ -58,7 +60,7 @@ window.onclick = function(event) {
 };
 
 
-addBook.addEventListener('click', function(event) {
+document.getElementById('bookForm').addEventListener('submit', function(event) {
     event.preventDefault();
     addBookToLibrary();
     displayBooks(); // Update the display with the new book
@@ -78,7 +80,7 @@ const saveLocal = () => {
 const restoreLocal = () => {
     const books = JSON.parse(localStorage.getItem('library'));
     if (books) {
-        myLibrary.books = books.map(book => new Book(book.title, book.author, book.pages, book.genre, book.read));
+        myLibrary.books = books.map(book => new Book(book.title, book.author, book.pages, book.genre, book.year, book.read));
         displayBooks(); // Ensure you implement this function to show books on the UI
     }
 };
@@ -116,6 +118,13 @@ const displayBooks = () => {
         bookGenre.appendChild(genreLabel);
         bookGenre.append( ` ${book.genre}` );
         bookTile.appendChild(bookGenre);
+
+        const yearRead = document.createElement('p');
+        const yearLabel = document.createElement('strong');
+        yearLabel.textContent = 'Year Read:';
+        yearRead.appendChild(yearLabel);
+        yearRead.append( ` ${book.year}` );
+        bookTile.appendChild(yearRead);
 
         const bookRead = document.createElement('button');
         bookRead.textContent = book.read ? "Read" : "Not Read";
