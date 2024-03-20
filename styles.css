@@ -113,7 +113,6 @@ input {
     
 }
 
-
 .book-tile {
     border: 2px solid black;
     border-radius: 10px;
@@ -121,6 +120,27 @@ input {
     padding: 10px;
     background-color: rgb(235, 212, 182);
     box-shadow: 2px 5px 5px black;
+    text-align: center;
+}
+
+.book-read {
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: lightgreen;
+    width: 20vw;
+}
+
+.not-read {
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: lightpink;
+    width: 20vw;
+}
+
+
+.delete-book {
+    width: 20vw;
+    padding: 10px;
 }
 
 .footer {
