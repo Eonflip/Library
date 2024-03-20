@@ -73,19 +73,27 @@ label {
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
     border-radius: 20px;
-    width: 20%;
+    width: 22%;
 }
 
 #bookForm {
-    width: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 input {
-    margin: 4px;
+    margin: 5px;
+    width: 15vw;
+    padding: 5px;
+    /*text-align: center;*/
+}
+
+
+button.add-book {
+    margin-top: 10px;
 }
 
 
