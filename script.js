@@ -119,10 +119,21 @@ const displayBooks = () => {
 
         const bookRead = document.createElement('button');
         bookRead.textContent = book.read ? "Read" : "Not Read";
-        bookRead.classList.add('book-read');
+        if(book.read) {
+            bookRead.classList.add("book-read");
+        } else {
+            bookRead.classList.add("not-read");
+        }
+        bookRead.addEventListener('click', () => {
+            book.read = !book.read;
+            updateReadButton(bookRead, book.read);
+            saveLocal();
+        });
+
         bookTile.appendChild(bookRead);
 
         const deleteBook = document.createElement('button');
+        deleteBook.classList.add('delete-book');
         deleteBook.textContent = 'Delete';
         deleteBook.onclick = function() { // Attach event listener here
             // Remove the book from the array and the DOM
@@ -133,7 +144,12 @@ const displayBooks = () => {
         bookTile.appendChild(deleteBook);
 
         bookGrid.appendChild(bookTile);
+
     });
 };
 
-
+function updateReadButton(button, read) {
+    button.textContent = read ? "Read" : "Not Read";
+    button.classList.remove('book-read', 'not-read');
+    button.classList.add(read ? 'book-read' : 'not-read');
+}
