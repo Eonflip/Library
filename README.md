@@ -1,7 +1,7 @@
 # Library
 A library application written to store books that you've read
 
-[library-application](./books/library-example.jpg)
+![library-application](./books/library-example.jpg)
 
 ## Some topics I learned
 <li>JavaScript Classes</li>
